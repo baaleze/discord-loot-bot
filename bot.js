@@ -92,17 +92,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'drop':
 				if(channelID == 346316727296196629){
 					var s = pubgGrammar.expand();
-					var lines = s.split('%');
+					s = s.replace(new RegExp(/%/, 'g'), '\n');
 					bot.sendMessage({
 							to: channelID,
-							message:'The crate contained :' 
+							message:'The crate contained :\n'+s 
 						});
-					for(var l in lines){
-						bot.sendMessage({
-							to: channelID,
-							message:l
-						});
-					}
 				}
 				break;
 			case 'help':
