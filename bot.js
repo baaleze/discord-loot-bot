@@ -29,8 +29,31 @@ var y = '{"<start>":" <pre> <item> <ofmod> | <pre> <item>[2] | <item> <ofmod>[2]
 "<titleterm>": "leader | killer | chief | god | assassin | liberator | guardian ",\
 "<concept>": " war | beauty | hell | death | heaven | life | shit | stupidity | whatever ",\
 "<noun>": "hawk | shit | bull | snake | whatever | sun | moon | thing"}';
+
+var pubg = '{ "<start>":"<loot>%<loot>%<loot>%<loot>%<loot> | <loot>%<loot>%<loot>%<loot> | <loot>%<loot>%<loot> ", \
+"<loot>":"15x 7.62 ammo | 10x .200 ammo | x15 scope | x8 scope[2] | Quickdraw mag for pistol | M24 | AWM | Groza | Kar98 | Adrenaline | Painkiller | Lv.3 Helmet | Lv2 Helmet | Ghillie suit | M249 | 100x 5.56 ammo | Pan " \
+}';
+
+var robin = '{ "<start>":"Nom d\'un <m> Batman! | Nom d\'une <f> Batman!", \
+"<m>":"<mpre> <mword> <msuf> | <mpre> <mword> | <mword> <msuf> | <mword>", \
+"<f>":"<fpre> <fword> <fsuf> | <fpre> <fword> | <fword> <fsuf> | <fword>", \
+"<mword>":"puit | salami | saucisson | calamar | mollet | Batman | ordinateur | meuble IKEA",\
+"<fword>":"péridurale | péridotite | catin | rivière | maison |  ",\
+"<mpre>":"gigantesque | stupide | petit | charmant | super | méga ",\
+"<msuf>":"mural | artésien | en crue | en faible quantité | en rupture de stock | limitrophe | excessivement merveilleux | hanté | moisi ",\
+"<fpre>":"gigantesque | stupide | petite | charmante | super | méga ",\
+"<fsuf>":"murale | artésienne | en crue | en faible quantité | en rupture de stock | limitrophe | excessivement merveilleuse | hantée | moisie "\
+}';
+
 var grammar = rita.RiGrammar();
 grammar.load(y);
+
+var pubgGrammar = rita.RiGrammar();
+pubgGrammar.load(pubg);
+
+var robinGrammar = rita.RiGrammar();
+robinGrammar.load(robin);
+
 // Initialize Discord Bot
 logger.error('usign token '+auth.token);
 var bot = new Discord.Client({
@@ -64,10 +87,38 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						to: channelID,
 						message:'You looted a '+cl+'[ '+s.trim()+' ]'+cl 
 					});
+			case 'pubg':
+			case 'carepackage':
+			case 'drop':
+				if(channelID == 346316727296196629){
+					var s = pubgGrammar.expand();
+					var lines = s.split('%');
+					bot.sendMessage({
+							to: channelID,
+							message:'The crate contained :' 
+						});
+					for(var l in lines){
+						bot.sendMessage({
+							to: channelID,
+							message:l
+						});
+					}
+				}
 				break;
+			case 'help':
+				bot.sendMessage({
+						to: channelID,
+						message:'Commands available : !loot !pubg !carepackage !drop robin(anywhere in the message)' 
+					});
             // Just add any case commands if you want to..
          }
-     }
+     }else if(message.includes("robin") || message.includes("Robin")){
+		var s = ronbinGrammar.expand();
+		bot.sendMessage({
+				to: channelID,
+				message:s
+			});
+	 }
 });
 
 
