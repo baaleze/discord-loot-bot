@@ -1,0 +1,12 @@
+{
+  "name": "loot-bot",
+  "version": "1.0.0",
+  "description": "looting bot",
+  "main": "bot.js",
+  "author": "baaleze",
+  "dependencies": {
+    "discord.io": "^2.5.3",
+    "rita": "^1.2.12",
+    "winston": "^2.4.0"
+  }
+}
