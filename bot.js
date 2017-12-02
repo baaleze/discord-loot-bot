@@ -38,7 +38,7 @@ var robin = '{ "<start>":"Nom d\'un <m> Batman! | Nom d\'une <f> Batman! \:bat:"
 "<m>":"<mpre> <mword> <msuf> | <mpre> <mword> | <mword> <msuf> | <mword>", \
 "<f>":"<fpre> <fword> <fsuf> | <fpre> <fword> | <fword> <fsuf> | <fword>", \
 "<mword>":"puit | salami | saucisson | calamar | mollet | Batman | ordinateur | meuble IKEA",\
-"<fword>":"péridurale | péridotite | catin | rivière | maison |  ",\
+"<fword>":"péridurale | péridotite | catin | rivière | maison ",\
 "<mpre>":"gigantesque | stupide | petit | charmant | super | méga ",\
 "<msuf>":"mural | artésien | en crue | en faible quantité | en rupture de stock | limitrophe | excessivement merveilleux | hanté | moisi ",\
 "<fpre>":"gigantesque | stupide | petite | charmante | super | méga ",\
