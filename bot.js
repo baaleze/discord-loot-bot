@@ -34,7 +34,7 @@ var pubg = '{ "<start>":"<loot>%<loot>%<loot>%<loot>%<loot> | <loot>%<loot>%<loo
 "<loot>":"15x 7.62 ammo | 10x .200 ammo | x15 scope | x8 scope[2] | Quickdraw mag for pistol | M24 | AWM | Groza | Kar98 | Adrenaline | Painkiller | Lv.3 Helmet | Lv2 Helmet | Ghillie suit | M249 | 100x 5.56 ammo | Pan " \
 }';
 
-var robin = '{ "<start>":"Nom d\'un <m> Batman! | Nom d\'une <f> Batman!", \
+var robin = '{ "<start>":"Nom d\'un <m> Batman! | Nom d\'une <f> Batman! \:bat:", \
 "<m>":"<mpre> <mword> <msuf> | <mpre> <mword> | <mword> <msuf> | <mword>", \
 "<f>":"<fpre> <fword> <fsuf> | <fpre> <fword> | <fword> <fsuf> | <fword>", \
 "<mword>":"puit | salami | saucisson | calamar | mollet | Batman | ordinateur | meuble IKEA",\
@@ -113,7 +113,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             // Just add any case commands if you want to..
          }
      }else if(message.includes("robin") || message.includes("Robin")){
-		var s = ronbinGrammar.expand();
+		var s = robinGrammar.expand();
 		bot.sendMessage({
 				to: channelID,
 				message:s
