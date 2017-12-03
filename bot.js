@@ -93,10 +93,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				var s = grammar.expand();
 				var count = (s.match(/@/g) || []).length;
 				s = s.replace(new RegExp(/@/, 'g'), '');
+				s = s.replace(new RegExp(/X/, 'g'), '');
 				var cl = count < 2 ? "\:small_blue_diamond:" : count < 4 ? "\:large_blue_diamond:" : count < 5 ? "\:large_orange_diamond:" : count < 7 ? "\:small_red_triangle:" : "\:diamonds:";
 					bot.sendMessage({
 						to: channelID,
-						message:'You looted a '+cl+'[ '+s.trim()+' ]'+cl 
+						message:'You looted :\n'+cl+'[ '+s.trim()+' ]'+cl 
 					});
 			case 'pubg':
 			case 'carepackage':
