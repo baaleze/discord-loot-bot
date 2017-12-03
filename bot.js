@@ -31,7 +31,7 @@ var y = '{"<start>":" <pre> <item> <ofmod> | <pre> <item>[2] | <item> <ofmod>[2]
 "<colorterm>": " blue | red | white | black | yellow | orange | dark | purple | cyan | magenta | brown ",\
 "<opinionterm>": " shitty | exquisite | beautiful | nice | good | bad | the worst | alright ",\
 "<sizeterm>": " big | small | huge | tiny | long | short ",\
-"<shapeterm>": " round | square | triangular | sperical | flat | narrow ",\
+"<shapeterm>": " round | square | triangular | spherical | flat | narrow ",\
 "<ageterm>": " old | new | archaic | ancient | recent | up-to-date ",\
 "<matterm>": " gold | plastic | wood | leather | copper | slime | stone ",\
 "<originterm>": " Chinese | French | Korean | English | American | alien | Indian ",\
@@ -94,6 +94,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				var count = (s.match(/@/g) || []).length;
 				s = s.replace(new RegExp(/@/, 'g'), '');
 				s = s.replace(new RegExp(/X/, 'g'), '');
+				s = s.replace(new RegExp(/\s+/, 'g'), ' ');
 				var cl = count < 2 ? "\:small_blue_diamond:" : count < 4 ? "\:large_blue_diamond:" : count < 5 ? "\:large_orange_diamond:" : count < 7 ? "\:small_red_triangle:" : "\:diamonds:";
 					bot.sendMessage({
 						to: channelID,
