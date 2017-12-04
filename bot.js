@@ -45,25 +45,11 @@ var pubg = '{ "<start>":"<loot>%<loot>%<loot>%<loot>%<loot> | <loot>%<loot>%<loo
 "<loot>":"15x 7.62 ammo[2] | 10x .200 ammo | x15 scope | x8 scope[2] | Quickdraw mag for pistol | M24 | AWM | Groza | Kar98 | Adrenaline | Painkiller | Lv.3 Helmet | Lv2 Helmet | Ghillie suit | M249 | 100x 5.56 ammo[2] | Pan " \
 }';
 
-var robin = '{ "<start>":"Nom d\'un <m> Batman! \:bat: | Nom d\'une <f> Batman! \:bat: ", \
-"<m>":"<mpre> <mword> <msuf> | <mpre> <mword> | <mword> <msuf> | <mword>", \
-"<f>":"<fpre> <fword> <fsuf> | <fpre> <fword> | <fword> <fsuf> | <fword>", \
-"<mword>":"puit | salami | saucisson | calamar | mollet | Batman | ordinateur | meuble IKEA | cornichon ",\
-"<fword>":"péridurale | péridotite | catin | rivière | maison | prémolaire ",\
-"<mpre>":"gigantesque | stupide | petit | charmant | super | méga ",\
-"<msuf>":"mural | artésien | en crue | en faible quantité | en rupture de stock | limitrophe | excessivement merveilleux | hanté | moisi | à la confiture ",\
-"<fpre>":"gigantesque | stupide | petite | charmante | super | méga ",\
-"<fsuf>":"murale | artésienne | en crue | en faible quantité | en rupture de stock | limitrophe | excessivement merveilleuse | hantée | moisie | à la confiture "\
-}';
-
 var grammar = rita.RiGrammar();
 grammar.load(y);
 
 var pubgGrammar = rita.RiGrammar();
 pubgGrammar.load(pubg);
-
-var robinGrammar = rita.RiGrammar();
-robinGrammar.load(robin);
 
 // Initialize Discord Bot
 logger.error('usign token '+auth.token);
@@ -119,13 +105,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
             // Just add any case commands if you want to..
          }
-     }else if((message.includes("robin") || message.includes("Robin")) && !(message.includes("robinet") || message.includes("Robinet"))){
-		var s = robinGrammar.expand();
-		bot.sendMessage({
-				to: channelID,
-				message:s
-			});
-	 }
+     }
 });
 
 
