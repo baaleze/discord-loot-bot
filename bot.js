@@ -21,7 +21,7 @@ var y = '{"<start>":" <pre> <item> <ofmod> | <pre> <item>[2] | <item> <ofmod>[2]
 "<material>": "@<matterm> | X[4]",\
 "<ofmod>": "of @<verb> | of @<concept> | of the @<noun> | of the <pre> @<noun> | \\\"<title> of <thing>\\\"",\
 "<thing>": "@<noun> | @<concept>",\
-"<title>": "<adjterm>@ <titleterm>@ | <titleterm>@ ",\
+"<title>": "<pre> <titleterm>@ | <titleterm>@ ",\
 "<item>": "sword | shield | breastplate | armor | dart | arrow | bow | spear | ring | pair of socks | helmet | brick | tool | screwdriver | cup | crown | amulet | tiara | hat | pair of glasses | sandwich | Mr <name>@",\
 "<name>": "<lastname> | <firstname> <lastname> | <nickname>[2] | <firstname> \\\"<nickname>\\\" <lastname>[2] ",\
 "<lastname>": "Johnson | Guillon-Verne | Rastapopoulos | Marimont | Couanon | Pazat ",\
