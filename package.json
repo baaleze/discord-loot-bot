@@ -5,7 +5,7 @@
   "main": "bot.js",
   "author": "baaleze",
   "dependencies": {
-    "discord.io": "^2.5.3",
+    "discord.js": "^11.2.1",
     "rita": "^1.2.12",
     "winston": "^2.4.0"
   }

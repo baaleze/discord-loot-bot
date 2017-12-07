@@ -1,4 +1,4 @@
-var Discord = require('discord.io');
+var Discord = require('discord.js');
 var logger = require('winston');
 var auth = require('./robinauth.json');
 var rita = require('rita');
@@ -9,7 +9,7 @@ logger.add(logger.transports.Console, {
 });
 logger.level = 'debug';
 // RITA INIT
-var robin = '{ "<start>":"Nom d\'un <m> Batman! \:bat: | Nom d\'une <f> Batman! \:bat: ", \
+var robin = '{ "<start>":"Nom d\'un <m> %U%! | Nom d\'une <f> %U%! ", \
 "<m>":"<mpre> <mword> <msuf> | <mpre> <mword> | <mword> <msuf> | <mword>", \
 "<f>":"<fpre> <fword> <fsuf> | <fpre> <fword> | <fword> <fsuf> | <fword>", \
 "<mword>":"puit | salami | saucisson | calamar | mollet | Batman | ordinateur | meuble IKEA | cornichon | schtroumpf ",\
@@ -24,32 +24,26 @@ var robinGrammar = rita.RiGrammar();
 robinGrammar.load(robin);
 
 // Initialize Discord Bot
-logger.error('using token '+auth.token);
-var bot = new Discord.Client({
-   token: auth.token,
-   autorun: true
-});
-bot.on('ready', function (evt) {
+var bot = new Discord.Client();
+bot.on('ready', () => {
     logger.info('Connected');
     logger.info('Logged in as: ');
-    logger.info(bot.username + ' - (' + bot.id + ')');
+    logger.info(bot.user.username + ' - (' + bot.user.id + ')');
 });
 
-bot.on('disconnect', function(errMsg,code) { logger.error(errMsg + ' code ' + code); });
+bot.on('error',(error) => { logger.error(error.message); });
 
-bot.on('message', function (user, userID, channelID, message, evt) {
+bot.on('message', (message) => {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
-    if((message.includes("robin") || message.includes("Robin")) && !(message.includes("robinet") || message.includes("Robinet"))){
-		var s = robinGrammar.expand();
-		bot.sendMessage({
-				to: channelID,
-				message:s
-			});
+    if(message.isMemberMentioned(bot.user)){
+        var s = robinGrammar.expand();
+        s = s.replace(new RegExp(/%U%/,'g'), message.author.username);
+		message.channel.send(s)
 	 }
 });
 
-
+bot.login(auth.token);
 
 
 
