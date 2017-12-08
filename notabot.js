@@ -29,13 +29,15 @@ bot.on('error',(error) => { logger.error(error.message); });
 
 bot.on('message', (message) => {
     // clean message
-    var clean = message.content;
+    var clean = message.cleanContent;
     clean = clean.replace(new RegExp(/@/,'g'), '');
     clean = clean.replace(new RegExp(/[`]{1,3}.+?[`]{1,3}/,'g'), '');
     clean = clean.trim();
     var last = clean.slice(-1);
     if(!(last == '?' || last == '!' || last == '.')){
-       clean = clean + '.'; 
+        clean = clean + '. '; 
+    }else{
+        clean = clean + ' '; 
     }
 
     // learn it
