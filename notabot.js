@@ -14,7 +14,7 @@ logger.add(logger.transports.Console, {
 logger.level = 'debug';
 
 // INIT MARKOV CHAIN
-var markov = new rita.RiMarkov(4);
+var markov = new rita.RiMarkov(4,false,true);
 markov.loadFrom('markov_lexicon.txt');
 
 // Initialize Discord Bot
