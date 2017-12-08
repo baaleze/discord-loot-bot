@@ -14,7 +14,7 @@ logger.add(logger.transports.Console, {
 logger.level = 'debug';
 
 // INIT MARKOV CHAIN
-var markov = new rita.RiMarkov(4,false,true);
+var markov = new rita.RiMarkov(4,true,true);
 markov.loadFrom('markov_lexicon.txt');
 
 // Initialize Discord Bot
@@ -28,20 +28,29 @@ bot.on('ready', () => {
 bot.on('error',(error) => { logger.error(error.message); });
 
 bot.on('message', (message) => {
+    // clean message
+    var clean = message.content;
+    clean = clean.replace(new RegExp(/@/,'g'), '');
+    clean = clean.replace(new RegExp(/`.+?`/,'g'), '');
+    clean = clean.trim();
+    var last = clean.slice(-1);
+    if(!(last == '?' || last == '!' || last == '.')){
+       clean = clean + '.'; 
+    }
+
     // learn it
-    markov.loadText(message.cleanContent);
+    markov.loadText(clean);
 
     // store it for next time
-    fs.appendFileSync('markov_lexicon.txt', message.cleanContent+ ". ");
+    fs.appendFileSync('markov_lexicon.txt', clean);
 
     // say something ?
     if(Math.random()*100 < chance || message.isMemberMentioned(bot.user)) {
         var nb = Math.floor(Math.random() * 2) + 1;
         
-        for (let i = 0; i < nb; i++) {
-            var element = markov.generateUntil(/[.]/).join(" ");
+        markov.generateSentences(nb).forEach(element => {
             message.channel.send(element);
-        }
+        });
         
     }
 });
