@@ -14,7 +14,7 @@ logger.add(logger.transports.Console, {
 logger.level = 'debug';
 
 // INIT MARKOV CHAIN
-var markov = new rita.RiMarkov(4,false,true);
+var markov = new rita.RiMarkov(4,true,true);
 markov.loadFrom('markov_lexicon.txt');
 
 // Initialize Discord Bot
@@ -32,7 +32,7 @@ bot.on('message', (message) => {
     markov.loadText(message.cleanContent);
 
     // store it for next time
-    fs.appendFileSync('markov_lexicon.txt', message.cleanContent+ " ");
+    fs.appendFileSync('markov_lexicon.txt', message.cleanContent+ ". ");
 
     // say something ?
     if(Math.random() < chance || message.isMemberMentioned(bot.user)) {
