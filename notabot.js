@@ -36,7 +36,11 @@ bot.on('message', (message) => {
 
     // say something ?
     if(Math.random() < chance || message.isMemberMentioned(bot.user)) {
-        message.channel.send(markov.generateSentence());
+        var nb = Math.floor(Math.random() * 3) + 1;
+        var sentences = markov.generateSentences(nb);
+        sentences.forEach(element => {
+            message.channel.send(element);
+        });
     }
 });
 
