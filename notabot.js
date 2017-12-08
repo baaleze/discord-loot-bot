@@ -39,7 +39,7 @@ bot.on('message', (message) => {
         var nb = Math.floor(Math.random() * 2) + 1;
         
         for (let i = 0; i < nb; i++) {
-            var element = markov.generateUntil(/[.]/);
+            var element = markov.generateUntil(/[.]/).join(" ");
             message.channel.send(element);
         }
         
