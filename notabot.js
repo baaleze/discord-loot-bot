@@ -40,6 +40,8 @@ bot.on('message', (message) => {
         }else{
             clean = clean + ' '; 
         }
+        // capitalize
+        clean = clean.charAt(0).toUpperCase() + clean.slice(1);
 
         // learn it
         markov.loadText(clean);
