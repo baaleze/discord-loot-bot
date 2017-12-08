@@ -44,11 +44,13 @@ bot.on('message', (message) => {
         // capitalize
         clean = clean.charAt(0).toUpperCase() + clean.slice(1);
 
-        // learn it
-        markov.loadText(clean);
+        if(!message.isMemberMentioned(bot.user)){
+            // learn it only if it is not a mention to you
+            markov.loadText(clean);
 
-        // store it for next time
-        fs.appendFileSync('markov_lexicon.txt', clean);
+            // store it for next time
+            fs.appendFileSync('markov_lexicon.txt', clean);
+        }
 
         // say something ?
         if(Math.random()*100 < chance || message.isMemberMentioned(bot.user)) {
