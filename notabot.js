@@ -29,10 +29,10 @@ bot.on('error',(error) => { logger.error(error.message); });
 
 bot.on('message', (message) => {
     // learn it
-    markov.loadText(message.content);
+    markov.loadText(message.cleanContent);
 
     // store it for next time
-    fs.appendFileSync('markov_lexicon.txt', message.content);
+    fs.appendFileSync('markov_lexicon.txt', message.cleanContent+ " ");
 
     // say something ?
     if(Math.random() < chance || message.isMemberMentioned(bot.user)) {
