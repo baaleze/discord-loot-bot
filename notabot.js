@@ -14,7 +14,7 @@ logger.add(logger.transports.Console, {
 logger.level = 'debug';
 
 // INIT MARKOV CHAIN
-var markov = new rita.RiMarkov(4,true,true);
+var markov = new rita.RiMarkov(4,false,true);
 markov.loadFrom('markov_lexicon.txt');
 
 // Initialize Discord Bot
@@ -35,12 +35,14 @@ bot.on('message', (message) => {
     fs.appendFileSync('markov_lexicon.txt', message.cleanContent+ ". ");
 
     // say something ?
-    if(Math.random() < chance || message.isMemberMentioned(bot.user)) {
-        var nb = Math.floor(Math.random() * 3) + 1;
-        var sentences = markov.generateSentences(nb);
-        sentences.forEach(element => {
+    if(Math.random()*100 < chance || message.isMemberMentioned(bot.user)) {
+        var nb = Math.floor(Math.random() * 2) + 1;
+        
+        for (let i = 0; i < nb; i++) {
+            var element = markov.generateUntil(/[.]/);
             message.channel.send(element);
-        });
+        }
+        
     }
 });
 
