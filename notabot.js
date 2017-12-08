@@ -28,32 +28,34 @@ bot.on('ready', () => {
 bot.on('error',(error) => { logger.error(error.message); });
 
 bot.on('message', (message) => {
-    // clean message
-    var clean = message.cleanContent;
-    clean = clean.replace(new RegExp(/@/,'g'), '');
-    clean = clean.replace(new RegExp(/[`]{1,3}.+?[`]{1,3}/,'g'), '');
-    clean = clean.trim();
-    var last = clean.slice(-1);
-    if(!(last == '?' || last == '!' || last == '.')){
-        clean = clean + '. '; 
-    }else{
-        clean = clean + ' '; 
-    }
+    if(message.author.username != 'notabot'){
+        // clean message
+        var clean = message.cleanContent;
+        clean = clean.replace(new RegExp(/@/,'g'), '');
+        clean = clean.replace(new RegExp(/[`]{1,3}.+?[`]{1,3}/,'g'), '');
+        clean = clean.trim();
+        var last = clean.slice(-1);
+        if(!(last == '?' || last == '!' || last == '.')){
+            clean = clean + '. '; 
+        }else{
+            clean = clean + ' '; 
+        }
 
-    // learn it
-    markov.loadText(clean);
+        // learn it
+        markov.loadText(clean);
 
-    // store it for next time
-    fs.appendFileSync('markov_lexicon.txt', clean);
+        // store it for next time
+        fs.appendFileSync('markov_lexicon.txt', clean);
 
-    // say something ?
-    if(Math.random()*100 < chance || message.isMemberMentioned(bot.user)) {
-        var nb = Math.floor(Math.random() * 2) + 1;
-        
-        markov.generateSentences(nb).forEach(element => {
-            message.channel.send(element);
-        });
-        
+        // say something ?
+        if(Math.random()*100 < chance || message.isMemberMentioned(bot.user)) {
+            var nb = Math.floor(Math.random() * 2) + 1;
+            
+            markov.generateSentences(nb).forEach(element => {
+                message.channel.send(element);
+            });
+            
+        }
     }
 });
 
