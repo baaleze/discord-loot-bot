@@ -31,7 +31,7 @@ bot.on('message', (message) => {
     // clean message
     var clean = message.content;
     clean = clean.replace(new RegExp(/@/,'g'), '');
-    clean = clean.replace(new RegExp(/`.+?`/,'g'), '');
+    clean = clean.replace(new RegExp(/[`]{1,3}.+?[`]{1,3}/,'g'), '');
     clean = clean.trim();
     var last = clean.slice(-1);
     if(!(last == '?' || last == '!' || last == '.')){
