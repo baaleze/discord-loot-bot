@@ -65,7 +65,7 @@ bot.on('message', (message) => {
             var nb = Math.floor(Math.random() * 2.7) + 1;
             for (let index = 0; index < nb; index++) {
                 // generate 10 sentences
-                let sentences = markov.generateSentences(10);
+                let sentences = markov.generateSentences(50);
                 let maxRelevance = 0;
                 let sentenceToSay = sentences[0];
                 // for each sentence compute relevance
