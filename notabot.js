@@ -59,34 +59,14 @@ bot.on('message', (message) => {
 
             // get key words in the questions
             // by removing not significant words
-            var cleaner = clean.replace(new RegExp(/le|lui|la|elle|il|nous|nos|vous|vos|tu|ta|tes|les|je|j'|l'|ton|mon|ma|mes|des|du|on|ne|se|sa|son|ses|ces|ce|cette|cettes/,'g'), '');
-            var keywords = cleaner.replace(new RegExp(/\s+/,'g'),' ').split(" ");
+            var cleaner = clean.replace(new RegExp(/[?!.]/,'g'), '');
+            var word = cleaner.split(" ").slice(-1);
 
             var nb = Math.floor(Math.random() * 2.7) + 1;
-            for (let index = 0; index < nb; index++) {
-                // generate 10 sentences
-                let sentences = markov.generateSentences(50);
-                let maxRelevance = 0;
-                let sentenceToSay = sentences[0];
-                // for each sentence compute relevance
-                sentences.forEach(s => {
-                    let relevance = 0;
-                    // relevance is the number of keyword present in the sentence
-                    keywords.forEach(word => {
-                        if(s.includes(word)){
-                            relevance = relevance + 1;
-                        }
-                    });
-                    // store the sentence with best relevance
-                    if(relevance > maxRelevance){
-                        maxRelevance = relevance;
-                        sentenceToSay = s;
-                    }
-                });
-                // send the most relevant sentence (or at least the first sentence by default)
-                message.channel.send(sentenceToSay);
-            }// do it nb times
-            
+            markov.sentenceStarts = [ word ];
+            markov.generateSentences(nb).forEach(element => {
+                message.channel.send(element);
+            });
         }
     }
 });
