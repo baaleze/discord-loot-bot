@@ -34,6 +34,8 @@ bot.on('message', (message) => {
         var clean = message.cleanContent;
         clean = clean.replace(new RegExp(/@/,'g'), '');
         clean = clean.replace(new RegExp(/[`]{1,3}.+?[`]{1,3}/,'g'), '');
+        // remove urls
+        clean = clean.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
         clean = clean.trim();
         var last = clean.slice(-1);
         if(!(last == '?' || last == '!' || last == '.')){
