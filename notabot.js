@@ -16,7 +16,7 @@ logger.level = 'debug';
 // INIT MARKOV CHAIN
 var markov = new rita.RiMarkov(3,true,true);
 markov.loadFrom('markov_lexicon.txt');
-markov.minSentenceLength = 2;
+markov.minSentenceLength = 3;
 
 // Initialize Discord Bot
 var bot = new Discord.Client();
@@ -54,11 +54,36 @@ bot.on('message', (message) => {
 
         // say something ?
         if(Math.random()*100 < chance || message.isMemberMentioned(bot.user)) {
-            var nb = Math.floor(Math.random() * 2) + 1;
-            
-            markov.generateSentences(nb).forEach(element => {
-                message.channel.send(element);
-            });
+
+            // get key words in the questions
+            // by removing not significant words
+            var cleaner = clean.replace(new RegExp(/le|lui|la|elle|il|nous|nos|vous|vos|tu|ta|tes|les|je|j'|l'|ton|mon|ma|mes|des|du|on|ne|se|sa|son|ses|ces|ce|cette|cettes/,'g'), '');
+            var keywords = cleaner.replace(new RegExp(/\s+/,'g'),' ').split(" ");
+
+            var nb = Math.floor(Math.random() * 2.7) + 1;
+            for (let index = 0; index < nb; index++) {
+                // generate 10 sentences
+                let sentences = markov.generateSentences(10);
+                let maxRelevance = 0;
+                let sentenceToSay = sentences[0];
+                // for each sentence compute relevance
+                sentences.forEach(s => {
+                    let relevance = 0;
+                    // relevance is the number of keyword present in the sentence
+                    keywords.forEach(word => {
+                        if(s.includes(word)){
+                            relevance = relevance + 1;
+                        }
+                    });
+                    // store the sentence with best relevance
+                    if(relevance > maxRelevance){
+                        maxRelevance = relevance;
+                        sentenceToSay = s;
+                    }
+                });
+                // send the most relevant sentence (or at least the first sentence by default)
+                message.channel.send(sentenceToSay);
+            }// do it nb times
             
         }
     }
