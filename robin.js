@@ -12,12 +12,12 @@ logger.level = 'debug';
 var robin = '{ "<start>":"Nom d\'un <m> %U%! | Nom d\'une <f> %U%! ", \
 "<m>":"<mpre> <mword> <msuf> | <mpre> <mword> | <mword> <msuf> | <mword>", \
 "<f>":"<fpre> <fword> <fsuf> | <fpre> <fword> | <fword> <fsuf> | <fword>", \
-"<mword>":"puit | salami | saucisson | calamar | mollet | Batman | ordinateur | meuble IKEA | cornichon | schtroumpf ",\
-"<fword>":"péridurale | péridotite | catin | rivière | maison | prémolaire | vipère ",\
-"<mpre>":"gigantesque | stupide | petit | charmant | super | méga | grand ",\
-"<msuf>":"mural | artésien | en crue | en faible quantité | en rupture de stock | limitrophe | excessivement merveilleux | hanté | moisi | à la confiture | aspic ",\
-"<fpre>":"gigantesque | stupide | petite | charmante | super | méga | grande ",\
-"<fsuf>":"murale | artésienne | en crue | en faible quantité | en rupture de stock | limitrophe | excessivement merveilleuse | hantée | moisie | à la confiture | aspic "\
+"<mword>":"puit | salami | saucisson | calamar | mollet | Batman | ordinateur | meuble IKEA | cornichon | schtroumpf | feldspath plagioclase | surimi ",\
+"<fword>":"péridurale | péridotite | catin | rivière | maison | prémolaire | vipère | flaque de transpiration | moisissure | ",\
+"<mpre>":"gigantesque | stupide | petit | charmant | super | méga | grand | délicieux ",\
+"<msuf>":"mural | artésien | en crue | en faible quantité | en rupture de stock | limitrophe | excessivement merveilleux | hanté | moisi | à la confiture | aspic | en carton | au chocolat | cutané | pas super génial ",\
+"<fpre>":"gigantesque | stupide | petite | charmante | super | méga | grande | délicieuse ",\
+"<fsuf>":"murale | artésienne | en crue | en faible quantité | en rupture de stock | limitrophe | excessivement merveilleuse | hantée | moisie | à la confiture | aspic | en carton | au chocolat | cutanée | pas super géniale "\
 }';
 
 var robinGrammar = rita.RiGrammar();
