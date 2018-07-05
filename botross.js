@@ -28,7 +28,7 @@ bot.on('error',(error) => { logger.error(error.message); });
 bot.on('message', (message) => {
     if(message.author.username != 'yugibot'){
         // say something ?
-        if(message.isMemberMentioned(bot.user)) {
+        if(message.isMemberMentioned(bot.user) || Math.random() < 0.1) {
             var nbLine = Math.floor(Math.random()*3) + 1;
             markov.generateSentences(nbLine).forEach(s => {
                 message.channel.send(s);
