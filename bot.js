@@ -2,6 +2,7 @@ var Discord = require('discord.js');
 var logger = require('winston');
 var auth = require('./auth.json');
 var rita = require('rita');
+var items = require('lootResults.json');
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(logger.transports.Console, {
@@ -72,7 +73,7 @@ bot.on('message', message => {
         args = args.splice(1);
         switch(cmd) {
             // !loot
-            case 'loot':
+            case 'oldloot':
 				var s = grammar.expand();
 				var count = (s.match(/@/g) || []).length;
 				s = s.replace(new RegExp(/@/, 'g'), '');
@@ -80,6 +81,11 @@ bot.on('message', message => {
 				s = s.replace(new RegExp(/\s+/, 'g'), ' ');
 				var cl = count < 2 ? "\:small_blue_diamond:" : count < 4 ? "\:large_blue_diamond:" : count < 5 ? "\:large_orange_diamond:" : count < 7 ? "\:small_red_triangle:" : "\:diamonds:";
 				message.channel.send(message.author.username+' looted :\n'+cl+'[ '+s.trim()+' ]'+cl);
+				break;
+			case 'loot':
+				var item = items[Math.floor(Math.random() * items.length)];
+				message.channel.send(message.author.username+' looted :\n'+item);
+				break;
 			case 'pubg':
 			case 'carepackage':
 			case 'drop':
@@ -90,7 +96,7 @@ bot.on('message', message => {
 				}
 				break;
 			case 'help':
-				message.channel.send('Commands available : !loot !pubg !carepackage !drop robin(anywhere in the message)');
+				message.channel.send('Commands available : !loot !pubg !carepackage !drop ');
 				break;
             // Just add any case commands if you want to..
          }
