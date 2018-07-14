@@ -2,7 +2,7 @@ var Discord = require('discord.js');
 var logger = require('winston');
 var auth = require('./auth.json');
 var rita = require('rita');
-var items = require('lootResults.json');
+var items = require('./lootResults.json');
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(logger.transports.Console, {
@@ -83,8 +83,8 @@ bot.on('message', message => {
 				message.channel.send(message.author.username+' looted :\n'+cl+'[ '+s.trim()+' ]'+cl);
 				break;
 			case 'loot':
-				var item = items.data[Math.floor(Math.random() * items.data.length)];
-				message.channel.send(message.author.username+' looted :\n'+item);
+				var item = items[Math.floor(Math.random() * items.length)];
+				message.channel.send("*"+message.author.username+' looted :*\n'+item);
 				break;
 			case 'pubg':
 			case 'carepackage':
