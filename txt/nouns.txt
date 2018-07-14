@@ -1,3 +1,0 @@
-M.serpent.serpents.POISON=5.POISON|ANIMAL.
-M.ours.ours.FORCE=3.ANIMAL.10% de chance de faire peur
-F.biche.biches.VITESSE=2.ANIMAL.
