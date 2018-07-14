@@ -1,4 +1,5 @@
-["***Rshashapuru***\n** grands arcs putrides des vraiment très grandes grandes biches géantes **\nPOISON = 10 | DEGAT = 25 | VITESSE = 2 | DEGATS = 10\n*20% de chance d'assomer*\n[A_DISTANCE|DEUX_MAINS|ARME|POISON|ANIMAL]",
+{
+    data: ["***Rshashapuru***\n** grands arcs putrides des vraiment très grandes grandes biches géantes **\nPOISON = 10 | DEGAT = 25 | VITESSE = 2 | DEGATS = 10\n*20% de chance d'assomer*\n[A_DISTANCE|DEUX_MAINS|ARME|POISON|ANIMAL]",
 "***Damocladbo***\n** petit bouclier vite fait géant des grandes biches sexy très géantes **\nBLOQUAGE% = 25 | DEFENSE = 5 | DEGAT = 20 | PRIX% = 100 | VITESSE = 2\n*20% de chance d'assomer*\n[UNE_MAIN|DEFENSIF|ANIMAL|SEXY]",
 "** on ne peut plus grand bouclier putride **\nBLOQUAGE% = 25 | DEFENSE = 5 | POISON = 10 | DEGAT = 5\n**\n[UNE_MAIN|DEFENSIF|POISON]",
 "** bouclier sexy pas vraiment sexy **\nBLOQUAGE% = 25 | DEFENSE = 5 | PRIX% = 200\n**\n[UNE_MAIN|DEFENSIF|SEXY]",
@@ -19997,4 +19998,4 @@
 "***Trastram***\n** boucliers mous putrides 'mangeurs du serpent mou' **\nBLOQUAGE% = 25 | DEFENSE = 5 | DEGAT = -10 | POISON = 15\n*Ne peux rien trancher; Soigne 10 PV*\n[UNE_MAIN|DEFENSIF|POISON|ANIMAL]",
 "** armure sexy géante **\nDEFENSE = 10 | DEGAT = 10 | PRIX% = 100\n*20% de chance d'assomer*\n[ARMURE|DEFENSIF|SEXY]",
 "** grandes épées sexy **\nDEGAT = 13 | PRIX% = 100\n**\n[MELEE|UNE_MAIN|ARME|SEXY]",
-"** arc mou pas vraiment géant **\nDEGAT = 5 | DEGATS = 10\n*Ne peux rien trancher; 20% de chance d'assomer*\n[A_DISTANCE|DEUX_MAINS|ARME]"]
+"** arc mou pas vraiment géant **\nDEGAT = 5 | DEGATS = 10\n*Ne peux rien trancher; 20% de chance d'assomer*\n[A_DISTANCE|DEUX_MAINS|ARME]"]}

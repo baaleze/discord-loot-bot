@@ -83,7 +83,7 @@ bot.on('message', message => {
 				message.channel.send(message.author.username+' looted :\n'+cl+'[ '+s.trim()+' ]'+cl);
 				break;
 			case 'loot':
-				var item = items[Math.floor(Math.random() * items.length)];
+				var item = items.data[Math.floor(Math.random() * items.data.length)];
 				message.channel.send(message.author.username+' looted :\n'+item);
 				break;
 			case 'pubg':
