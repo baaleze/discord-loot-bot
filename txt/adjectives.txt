@@ -1,0 +1,6 @@
+B.grand.grands.grande.grandes.DEGAT=5..
+B.petit.petits.petite.petites.DEGAT=-5..
+A.géant.géants.géante.géantes.DEGAT=10..20% de chance d'assomer
+A.mou.mous.molle.molles.DEGAT=-5..Ne peux rien trancher
+A.putride.putrides.putride.putrides.POISON=10.POISON.
+A.sexy.sexy.sexy.sexy.PRIX%=100.SEXY.

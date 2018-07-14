@@ -1,0 +1,3 @@
+tueur.tueurs.tueuse.tueuses.DEGAT=5.MORT.
+mangeur.mangeurs.mangeuse.mangeuses...Soigne 10 PV
+voleur.voleurs.voleuse.voleuses.DISCRETION=10..
