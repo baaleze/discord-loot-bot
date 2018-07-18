@@ -55,7 +55,7 @@ bot.on('message', (message) => {
         }
 
         // say something ?
-        if(Math.random()*100 < chance || message.isMemberMentioned(bot.user)) {
+        if(Math.random()*100 < chance || message.isMentioned(bot.user)) {
 
             // get key words in the questions
             // by removing not significant words
