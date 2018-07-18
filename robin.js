@@ -36,7 +36,7 @@ bot.on('error',(error) => { logger.error(error.message); });
 bot.on('message', (message) => {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
-    if(message.isMemberMentioned(bot.user)){
+    if(message.isMentioned(bot.user)){
         var s = robinGrammar.expand();
         s = s.replace(new RegExp(/%U%/,'g'), message.author.username);
 		message.channel.send(s)

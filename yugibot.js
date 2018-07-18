@@ -32,7 +32,7 @@ bot.on('error',(error) => { logger.error(error.message); });
 bot.on('message', (message) => {
     if(message.author.username != 'yugibot'){
         // say something ?
-        if(message.isMemberMentioned(bot.user)) {
+        if(message.isMentioned(bot.user)) {
             var text = '';
             var nbLine = Math.floor(Math.random()*5) + 1;
             var line = '';

@@ -46,7 +46,7 @@ bot.on('message', (message) => {
         // capitalize
         clean = clean.charAt(0).toUpperCase() + clean.slice(1);
 
-        if(!message.isMemberMentioned(bot.user)){
+        if(!message.isMentioned(bot.user)){
             // learn it only if it is not a mention to you
             markov.loadText(clean);
 
