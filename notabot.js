@@ -46,7 +46,7 @@ bot.on('message', (message) => {
         // capitalize
         clean = clean.charAt(0).toUpperCase() + clean.slice(1);
 
-        if(!message.isMentioned(bot.user)){
+        if(!message.isMentioned(bot.user) && message.channel.id != 389449583421423627){ // not #botfun
             // learn it only if it is not a mention to you
             markov.loadText(clean);
 
