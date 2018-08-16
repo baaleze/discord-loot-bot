@@ -78,6 +78,10 @@ bot.on('message', message => {
 					case 'prenoms':
 						wordArray = prenoms;
 						break;
+					case 'help':
+						message.channel.send('Usage: !fake [lang default:FR] [nbWords default:1]');
+						message.channel.send('Available languages: prenoms FR JP EN NR KR FR2 EN2 (EN2 and FR2 are less strict)');
+						return;
 				}
 				for(var i = 0; i < nb; i++) {
 					words.push(wordArray[Math.floor(Math.random() * wordArray.length)]);
@@ -85,10 +89,7 @@ bot.on('message', message => {
 				message.channel.send(words.join('\n'));
 				break;
 			
-			case 'help':
-				message.channel.send('Usage: !fake [lang default:FR] [nbWords default:1]');
-				message.channel.send('Available languages: prenoms FR JP EN NR KR FR2 EN2 (EN2 and FR2 are less strict)');
-				break;
+			
          }
      }
 });
