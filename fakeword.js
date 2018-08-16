@@ -35,7 +35,7 @@ bot.on('message', message => {
 		var cmd = args[0];
 		var lang = args[1];
 		var nb = Number(args[2]);
-		if ( nb || !Number.isInteger(nb) || nb < 1){
+		if ( isNaN(nb) || nb < 1){
 			nb = 1;
 		}
         switch(cmd) {
