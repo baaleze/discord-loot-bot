@@ -32,16 +32,17 @@ bot.on('message', message => {
     // It will listen for messages that will start with `!`
     if (message.content.substring(0, 1) == '!') {
         var args = message.content.substring(1).split(' ');
-		var lang = args[0];
-		var nb = Number(args[1]);
-		if (!Number.isInteger(nb) || nb < 1){
+		var cmd = args[0];
+		var lang = args[1];
+		var nb = Number(args[2]);
+		if ( nb || !Number.isInteger(nb) || nb < 1){
 			nb = 1;
 		}
         switch(cmd) {
             // !loot
 			case 'fake':
 				var words = [];
-				var wordArray = french;
+				var wordArray = fr;
 				switch(lang) {
 					case 'FR':
 					case 'french':
