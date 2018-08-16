@@ -82,7 +82,7 @@ bot.on('message', message => {
 				for(var i = 0; i < nb; i++) {
 					words.push(wordArray[Math.floor(Math.random() * wordArray.length)]);
 				}
-				message.channel.send(words.join(' '));
+				message.channel.send(words.join('\n'));
 				break;
 			
 			case 'help':
